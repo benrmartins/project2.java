@@ -7,41 +7,86 @@ import stdlib.StdRandom;
 // A data type to represent a random queue, implemented using a resizing array as the underlying
 // data structure.
 public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
-    ...
+    // the array of queue
+    Item[] q;
+    // the size of the array
+    int n;
 
     // Constructs an empty random queue.
     public ResizingArrayRandomQueue() {
-        ...
+        this.n = 0;
+        q = (Item[]) new Object [2];
     }
 
     // Returns true if this queue is empty, and false otherwise.
     public boolean isEmpty() {
-        ...
+        if (n == 0) {
+            return true;
+        }
+        return false;
     }
 
     // Returns the number of items in this queue.
     public int size() {
-        ...
+        return n;
     }
 
     // Adds item to the end of this queue.
     public void enqueue(Item item) {
-        ...
+
+        // throw an error if there is no item
+        if (item == null) {
+            throw new NullPointerException("item is null");
+        }
+
+        // when n is at the end of the list, it resizes it
+        if (n == q.length) {
+            resize(2 * q.length);
+        }
+        // adds the item to the end of the list
+        q[n++] = item;
+
+
+
     }
 
     // Returns a random item from this queue.
     public Item sample() {
-        ...
+        if (isEmpty()) {
+            throw new NoSuchElementException("Random queue is empty");
+        }
+        // randomly choose a item from the list
+        int ran = StdRandom.uniform(0, n);
+        return q[ran];
     }
 
     // Removes and returns a random item from this queue.
     public Item dequeue() {
-        ...
+        if (isEmpty()) {
+            throw new NoSuchElementException("Random queue is empty");
+
+        }
+        // randomly choose a item from the list
+        int ran = StdRandom.uniform(0, n);
+        Item item = q[ran];
+
+        // removes the random item from the list
+        q[ran] = q[n-1];
+        q[n-1] = null;
+
+        n--;
+        // resizes the array of removing it
+        if (n > 0 && n <= q.length/4) {
+            resize(q.length / 2);
+        }
+
+        return item;
     }
 
     // Returns an independent iterator to iterate over the items in this queue in random order.
     public Iterator<Item> iterator() {
-        ...
+        return new RandomQueueIterator();
+
     }
 
     // Returns a string representation of this queue.
@@ -56,21 +101,49 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
 
     // An iterator, doesn't implement remove() since it's optional.
     private class RandomQueueIterator implements Iterator<Item> {
-        ...
+        // the array of queues of items
+        Item[] items;
+        // the current index in the queues
+        int current;
 
         // Constructs an iterator.
         public RandomQueueIterator() {
-            ...
+            // adds the items from q to items
+            Item [] temp = (Item[]) new Object[n];
+            for (int i = 0; i < n; i++) {
+                temp[i] = q[i];
+            }
+            items = temp;
+            // shuffles the items in the array
+            StdRandom.shuffle(items);
+            this.current = 0;
+
         }
 
         // Returns true if there are more items to iterate, and false otherwise.
         public boolean hasNext() {
-            ...
+            // if current is less than items, there are no items to iterate
+            if (current < items.length) {
+                return true;
+            }
+            return false;
+
         }
 
         // Returns the next item.
         public Item next() {
-            ...
+            if (!hasNext()) {
+                throw new NoSuchElementException("Iterator is empty");
+            }
+
+            Item item = null;
+            // checks if the item is null
+            while (item == null) {
+                // returns the next item when it's not null
+                item = items[current];
+                current++;
+            }
+            return item;
         }
     }
 
