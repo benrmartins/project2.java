@@ -44,7 +44,7 @@ public class LinkedDeque<Item> implements Iterable<Item> {
         // Add the given item to the front of the deque
         Node oldFirst = first;
         first = new Node();
-        // setting the old node to the first
+        // setting next node to the newly created node
         first.next = oldFirst;
         // exchanging the node with each other
         first.item = item;
@@ -81,6 +81,7 @@ public class LinkedDeque<Item> implements Iterable<Item> {
         last = oldLast;
 
         if (first == null) {
+            // first and last must point to the same node.
             first = last;
         }
 
@@ -119,7 +120,7 @@ public class LinkedDeque<Item> implements Iterable<Item> {
 
     // Returns the item at the back of this deque.
     public Item peekLast() {
-        // throw a error if the deque is empty
+        // throw an error if the deque is empty
         if (isEmpty() || first == null) {
             throw new NoSuchElementException("Deque is empty");
         }
@@ -138,7 +139,7 @@ public class LinkedDeque<Item> implements Iterable<Item> {
         n--;
         // If this is the last item that is being removed
         if (last != null) {
-            //  both first and last must point to null
+            // both first and last must point to null
             last.next = null;
         } else {
             first = null;

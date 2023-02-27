@@ -14,6 +14,7 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
 
     // Constructs an empty random queue.
     public ResizingArrayRandomQueue() {
+        //  Initialize instance variables appropriately
         this.n = 0;
         q = (Item[]) new Object [2];
     }
@@ -33,7 +34,6 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
 
     // Adds item to the end of this queue.
     public void enqueue(Item item) {
-
         // throw an error if there is no item
         if (item == null) {
             throw new NullPointerException("item is null");
@@ -56,8 +56,8 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
             throw new NoSuchElementException("Random queue is empty");
         }
         // randomly choose a item from the list
-        int ran = StdRandom.uniform(0, n);
-        return q[ran];
+        return q[StdRandom.uniform(0, n)];
+
     }
 
     // Removes and returns a random item from this queue.
@@ -75,8 +75,8 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
         q[n-1] = null;
 
         n--;
-        // resizes the array of removing it
-        if (n > 0 && n <= q.length/4) {
+        // resizes the array after removing it
+        if (n <= q.length/4 && n > 0) {
             resize(q.length / 2);
         }
 
@@ -109,7 +109,7 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
         // Constructs an iterator.
         public RandomQueueIterator() {
             // adds the items from q to items
-            Item [] temp = (Item[]) new Object[n];
+            Item[] temp = (Item[]) new Object[n];
             for (int i = 0; i < n; i++) {
                 temp[i] = q[i];
             }

@@ -6,18 +6,24 @@
 2. Enter the difficulty level (1: very easy; 5: very difficult) of the project
    between <<< and >>> signs below (eg, <<<3>>>).
 
-   <<<4>>>
+   <<<4.5>>>
 
 3. Did you receive help from anyone? List their names, status (classmate, 
    CS210 grad, TA, other), and the nature of help received.
 
    Name               Status       Help Received
-   ----               ------       -------------
+   Kyle Clapper       TA           Helped me understand how to use exchange values in linked list (LinkedDeque)
 
-   ...                ...          ...
+   Vivian Kwong       SI           explained how to remove elements from a linked list (LinkedDeque)
+
+   Nathaniel Silveira  Classmate   Discussed concepts of using linkedlist and arrays for queue (LinkedDeque and ResizingArray)
+
+   Austin Fiedor       CS210 grad  Explained how to sort the linked deque by using a temporary stack and while loops (sort)
 
 4. List any other comments here. Feel free to provide any feedback on how
    much you learned from doing the assignment, and whether you enjoyed
    doing it.
 
-   ...
+   This project was very difficult. But I was able to put into practice what I learned from
+   class into this assignment. It was very difficult at first because not many of the usefully
+   topics in this problem was discussed until the last lecture before it wsa due.
