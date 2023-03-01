@@ -9,8 +9,8 @@ public class Sort {
     public static void main(String[] args) {
 
         // created a linked stack and deque
-        LinkedDeque<String> q = new LinkedDeque<String>();
         LinkedStack<String> s = new LinkedStack<String>();
+        LinkedDeque<String> q = new LinkedDeque<String>();
 
         while (!StdIn.isEmpty()) {
             // loops through a stores each character into the variable

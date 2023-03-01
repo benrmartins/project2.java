@@ -15,8 +15,9 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
     // Constructs an empty random queue.
     public ResizingArrayRandomQueue() {
         //  Initialize instance variables appropriately
-        this.n = 0;
         q = (Item[]) new Object [2];
+        this.n = 0;
+
     }
 
     // Returns true if this queue is empty, and false otherwise.
@@ -41,7 +42,7 @@ public class ResizingArrayRandomQueue<Item> implements Iterable<Item> {
 
         // when n is at the end of the list, it resizes it
         if (n == q.length) {
-            resize(2 * q.length);
+            resize(q.length * 2);
         }
         // adds the item to the end of the list
         q[n++] = item;

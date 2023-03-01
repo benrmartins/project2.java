@@ -25,5 +25,5 @@
    doing it.
 
    This project was very difficult. But I was able to put into practice what I learned from
-   class into this assignment. It was very difficult at first because not many of the usefully
-   topics in this problem was discussed until the last lecture before it wsa due.
+   class into this assignment. Using the lecture slides from class was very helpful in this project. Some parts of
+   the slide had example code of the project, I just needed to format in a different way.
